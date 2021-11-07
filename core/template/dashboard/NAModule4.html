@@ -1,0 +1,61 @@
+<div class="eqLogic eqLogic-widget noResize netatmo netatmo-station NAModule1" data-eqType="#eqType#" data-category="#category#" data-tags="#data-tags#"
+	style="width:170px; height:185px;padding : 0px; border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#;  #style#"
+	data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
+	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
+	<center class="widget-name">
+		<span class="statusCmd" style="position:absolute; left:5px; z-index:1030;"></span>
+		<i class='fa fa-refresh pull-right cursor refresh' style="margin-top:5px; margin-right:3px;"></i>
+		<span class="cmd cmd-widget" data-cmd_id="#refresh_id#" style="display:none;"></span>
+		<a href="#eqLink#" style="font-size:1.2em; #hideEqLogicName#">#name_display# <span  class="object_name">#object_name#</span></a>
+	</center>
+	<div class="hygrothermographe">
+		<img class="hygrothermographe-background" src="core/template/dashboard/cmd.info.numeric.HygroThermographe/No.ext_100_Dark.png"></img>
+		<span class="cmd intNumTemp" data-cmd_id="#temperature_id#"></span>
+		<span class="decNumTemp"></span>
+		<span class="uniteTemp">°C</span>
+		<span class="cmd intNumHumidity" data-cmd_id="#humidity_id#"></span>
+		<span class="decNumHumidity"></span>
+		<span class="uniteHumidity">%</span>
+		<span class="cmd numTempMin" data-cmd_id="#min_temp_id#"></span>
+		<span class="cmd numTempMax" data-cmd_id="#max_temp_id#"></span>
+
+		<span class="decNumTemp value"></span>
+		<span class="uniteTemp">°C</span>
+		<span class="decNumHumidity value"></span>
+		<span class="uniteHumidity">%</span>
+	</div>
+	<script type="text/javascript">
+		jeedom.cmd.update['#temperature_id#'] = function (_options) {
+			var n = parseFloat(_options.display_value).toFixed(1);
+			var nsplit = n.split('.');
+			var _int = nsplit[0];
+			var _dec = nsplit[1];
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			id.find(".intNumTemp").empty().append(_int);
+			id.find(".decNumTemp").empty().append(_dec);
+		};
+		jeedom.cmd.update['#temperature_id#']({display_value: '#temperature#'});
+
+		jeedom.cmd.update['#humidity_id#'] = function (_options) {
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			id.find("span[data-cmd_id=#humidity_id#]").empty().append(_options.display_value);
+		};
+		jeedom.cmd.update['#humidity_id#']({display_value: '#humidity#'});
+		
+		jeedom.cmd.update['#min_temp_id#'] = function (_options) {
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			id.find("span[data-cmd_id=#min_temp_id#]").empty().append(_options.display_value);
+		};
+		jeedom.cmd.update['#min_temp_id#']({display_value: '#min_temp#'});
+
+		jeedom.cmd.update['#max_temp_id#'] = function (_options) {
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			id.find("span[data-cmd_id=#max_temp_id#]").empty().append(_options.display_value);
+		};
+		jeedom.cmd.update['#max_temp_id#']({display_value: '#max_temp#'});
+
+		$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
+			jeedom.cmd.execute({id: '#refresh_id#'});
+		});
+	</script>
+</div>

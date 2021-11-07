@@ -1,0 +1,398 @@
+<div class="eqLogic eqLogic-widget noResize netatmo NAModule2" data-eqType="#eqType#" data-category="#category#" data-tags="#data-tags#"
+	 style="width:250px; height:300px;padding : 0px; border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#;  #style#"
+	 data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
+	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
+	<center class="widget-name">
+		<span class="statusCmd" style="position:absolute;bottom : 3px;left : 5px; width : 30px;z-index: 500;"></span>
+		<i class='fa fa-refresh pull-right cursor refresh tooltips' title="Rafraîchir" style="margin-top: 3px;margin-right: 3px;"></i>
+		<a href="#eqLink#">#name_display#</a>
+		<a class="cmd pull-right" data-cmd_id="#refresh_id#" onclick="jeedom.cmd.execute({id: '#refresh_id#'});">
+			<i class="fa fa-refresh"></i>
+		</a>
+	</center>
+
+	<div class="reachable row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-4">
+			<div class="cmd cmd-widget widget-compass #history# row" data-type="info" data-subtype="numeric" data-template="compass" data-cmd_id="#windangle_id#">
+				<div class="title">
+					<div class="cmdName">Vent</div>
+				</div>
+				<div class="content-lg">
+					<div class="widget-compass-container">
+						<div class="widget-compass-outline"></div>
+						<div class="widget-compass-needle-placer">
+							<div class="widget-compass-needle"></div>
+						</div>
+						<div class="state"></div>
+						<div class="winDir"></div>
+					</div>
+				</div>
+				<div class="cmdStats #hide_history#" style="display:none">
+					<div class="col-xs-12 center-block">
+						<span title='{{Min}}' class='tooltips'>#minHistoryValue#</span>|<span title='{{Moyenne}}' class='tooltips'>#averageHistoryValue#</span>|<span title='{{Max}}' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="cmd cmd-widget widget-compass #history# row" data-type="info" data-subtype="numeric" data-template="compass" data-cmd_id="#gustangle_id#">
+				<div class="title">
+					<div class="cmdName">Rafale</div>
+				</div>
+				<div class="content-lg">
+					<div class="widget-compass-container">
+						<div class="widget-compass-outline"></div>
+						<div class="widget-compass-needle-placer">
+							<div class="widget-compass-needle"></div>
+						</div>
+						<div class="state"></div>
+						<div class="winDir"></div>
+					</div>
+				</div>
+				<div class="cmdStats #hide_history#" style="display:none">
+					<div class="col-xs-12 center-block">
+						<span title='{{Min}}' class='tooltips'>#minHistoryValue#</span>|<span title='{{Moyenne}}' class='tooltips'>#averageHistoryValue#</span>|<span title='{{Max}}' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<i class="icon meteo-vent"></i>
+			<span class="cmd history" data-cmd_id="#max_wind_str_id#" title="Vitesse collecté le #max_wind_str_collectDate#"></span>
+		</div>
+	</div>
+
+	<div style="display: none;">
+		<div class="col-xs-4">
+			<i class="fa fa-leaf"></i>
+			<span class="cmd history" data-cmd_id="#windstrength_id#" title="ent collecté le #windstrength_collectDate#"></span>
+		</div>
+		<div class="col-xs-4">
+			<i class="icon meteo-vent"></i>
+			<span class="cmd history" data-cmd_id="#guststrength_id#" title="Vitesse collecté le #guststrength_collectDate#"></span>
+		</div>
+		<div class="col-xs-4">
+			<i class="icon meteo-vent"></i>
+			<span class="cmd history" data-cmd_id="#max_wind_str_id#" title="Vitesse collecté le #max_wind_str_collectDate#"></span>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div id="windDirection#id#" class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#windangle_id#" style="width: 100%; height: 100%;"></div>
+		<div class="cmd" data-type="info" data-subtype="numeric" data-cmd_id="#gustangle_id#"></div>
+	</div>
+
+
+	<script type="text/javascript">
+
+		var chartwindDirection#uid# = new Highcharts.Chart({
+		chart: {
+		height: '100%',
+				renderTo: 'windDirection#id#',
+				type: 'gauge',
+				backgroundColor: 'transparent',
+				plotBackgroundColor: null,
+				plotBackgroundImage: null,
+				plotBorderWidth: 0,
+				plotShadow: false,
+				spacingTop: 0,
+				spacingLeft: 0,
+				spacingRight: 0,
+				spacingBottom: 0
+		},
+				title: {
+				text: null
+				},
+				credits: {
+				enabled: false
+				},
+				pane: {
+				startAngle: 0,
+						endAngle: 360,
+						background: null
+				},
+				exporting : {
+				enabled: false
+				},
+				plotOptions: {
+				series: {
+				dataLabels: {
+				enabled: true
+				}
+				},
+						gauge: {
+						pivot: {
+						backgroundColor: 'silver'
+						}
+						}
+				},
+				yAxis: {
+				min: 0,
+						max: 360,
+						tickWidth: 2,
+						tickLength: 10,
+						tickInterval: 45,
+						lineWidth: 4,
+						plotBands: [
+						{
+						from: 0,
+								to: 10,
+								color: '#DF5353' // red
+						},
+						{
+						from: 350,
+								to: 360,
+								color: '#DF5353' // red
+						}
+						],
+						labels: {
+						distance: - 16,
+								formatter: function () {
+								if (this.value === 360) {
+								return '<span style="font-weight:bold;color:#DF5353 !important;">N</span>';
+								} else if (this.value === 90) {
+								return '<span style="font-weight:bold;color:black !important;">E</span>';
+								} else if (this.value === 180) {
+								return '<span style="font-weight:bold;color:black !important;">S</span>';
+								} else if (this.value === 270) {
+								return '<span style="font-weight:bold;color:black !important;">W</span>';
+								}
+								}
+						},
+						title: {
+						text: null
+						}
+				},
+				series: [
+				{
+				name: 'Vent',
+						data: [0],
+						dial: {
+						radius: '60%',
+								baseWidth: 2,
+								rearLength: '20%',
+								backgroundColor: 'orange'
+						},
+						tooltip: {
+						valueSuffix: ' °'
+						},
+						dataLabels: {
+						formatter: function () {
+						return '<span style="color:#993">' + this.y + '  °</span>';
+						},
+								backgroundColor: {
+								linearGradient: {
+								x1: 0,
+										y1: 0,
+										x2: 0,
+										y2: 1
+								},
+										stops: [
+										[0, '#DDD'],
+										[1, '#FFF']
+										]
+								}
+						},
+				},
+				{
+				name: 'Rafale',
+						data: [0],
+						dial: {
+						radius: '80%',
+								baseWidth: 5,
+								rearLength: '30%',
+								backgroundColor: 'red'
+						},
+						tooltip: {
+						valueSuffix: ' °'
+						},
+						dataLabels: {
+						formatter: function () {
+						return '<span style="color:#339">' + this.y + '  °</span>';
+						},
+								backgroundColor: {
+								linearGradient: {
+								x1: 0,
+										y1: 0,
+										x2: 0,
+										y2: 1
+								},
+										stops: [
+										[0, '#DDD'],
+										[1, '#FFF']
+										]
+								}
+						},
+				}
+				]
+
+		});
+		
+		
+	/*						var windangle_id = $('.cmd[data-cmd_id=#windangle_id#]');
+					jeedom.cmd.update['#id#'] = function(_options) {
+					var windDir#id# = directions#id#[Math.round(((_options.display_value %= 360) < 0 ? _options.display_value + 360 : _options.display_value) / 45) % 8];
+					windangle_id.find('.widget-compass-needle-placer').css('transform', 'rotate(' + _options.display_value + 'deg)');
+					windangle_id.find('.state').text(_options.display_value.toString() + '°');
+					windangle_id.find('.winDir').html(windDir#id#);
+					}
+
+					jeedom.cmd.update['#id#']({display_value:'#state#', valueDate:'#valueDate#', collectDate:'#collectDate#', alertLevel:'#alertLevel#'});
+					if ($.issetWidgetOptParam('#needle_color#', 'needle_color')) {
+					windangle_id.find('.widget-compass-needle').css('border-top-color', '#needle_color#');
+					}
+					if ($.issetWidgetOptParam('#ns_color#', 'ns_color')) {
+					windangle_id.find('.widget-compass-outline').css({'border-top-color' : '#ns_color#', 'border-bottom-color' : '#ns_color#'});
+					}
+					if ($.issetWidgetOptParam('#oe_color#', 'oe_color')) {
+					windangle_id.find('.widget-compass-outline').css({'border-left-color' : '#oe_color#', 'border-right-color' : '#oe_color#'});
+					}
+					if ($.issetWidgetOptParam('#scale#', 'scale')) {
+					windangle_id.find('.widget-compass-container').css('transform', 'scale(#scale#)');
+					}
+		*/
+
+		jeedom.cmd.update['#windangle_id#'] = function(_options){
+			const directions = ['{{Nord}}', '{{Nord-Est}}', '{{Est}}', '{{Sud-Est}}', '{{Sud}}', '{{Sud-Ouest}}', '{{Ouest}}', '{{Nord-Ouest}}'];
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			var windangle_id = id.find('.cmd[data-cmd_id=#windangle_id#]');
+			windangle_id.attr('title', '{{Date de valeur}} : ' + _options.valueDate + '<br/>{{Date de collecte}} : ' + _options.collectDate);
+			if (_options.display_value !== '' && _options.display_value !== undefined) {
+				if (_options.display_value === -1) {
+					chartwindDirection#uid#.series[1].points[0].update(_options.display_value);
+					windangle_id.find('.state').text('');
+					windangle_id.find('.winDir').text('Pas de vent');
+					windangle_id.find('.widget-compass-needle-placer').css('display', 'none');
+				} else {
+					chartwindDirection#uid#.series[1].points[0].update(_options.display_value);
+					var windDir#windangle_id# = directions[Math.round(((_options.display_value %= 360) < 0 ? _options.display_value + 360 : _options.display_value) / 45) % 8];
+					windangle_id.find('.winDir').html(windDir#windangle_id#);
+					windangle_id.find('.widget-compass-needle-placer').css('display', 'block');
+					windangle_id.find('.widget-compass-needle-placer').css('transform', 'rotate(' + _options.display_value + 'deg)');
+				}
+			}
+		};
+		jeedom.cmd.update['#windangle_id#']({display_value:#windangle#});
+
+		jeedom.cmd.update['#gustangle_id#'] = function(_options){
+			const directions = ['{{Nord}}', '{{Nord-Est}}', '{{Est}}', '{{Sud-Est}}', '{{Sud}}', '{{Sud-Ouest}}', '{{Ouest}}', '{{Nord-Ouest}}'];
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			var gustangle_id = id.find('.cmd[data-cmd_id=#gustangle_id#]');
+			gustangle_id.attr('title', '{{Date de valeur}} : ' + _options.valueDate + '<br/>{{Date de collecte}} : ' + _options.collectDate);
+			if (_options.display_value !== '' && _options.display_value !== undefined) {
+				if (_options.display_value === - 1) {
+					chartwindDirection#uid#.series[0].points[0].update(_options.display_value);
+					windangle_id.find('.state').text('');
+					gustangle_id.find('.winDir').text('Pas de rafale');
+					gustangle_id.find('.widget-compass-needle-placer').css('display', 'none');
+				} else {
+					chartwindDirection#uid#.series[0].points[0].update(_options.display_value);
+					var gustDir#gustangle_id# = directions[Math.round(((_options.display_value %= 360) < 0 ? _options.display_value + 360 : _options.display_value) / 45) % 8];
+					gustangle_id.find('.winDir').html(gustDir#gustangle_id#);
+					gustangle_id.find('.widget-compass-needle-placer').css('display', 'block');
+					gustangle_id.find('.widget-compass-needle-placer').css('transform', 'rotate(' + _options.display_value + 'deg)');
+				}
+			}
+		};
+		jeedom.cmd.update['#gustangle_id#']({display_value:#gustangle#});
+
+		jeedom.cmd.update['#windstrength_id#'] = function (_options) {
+			const parsed = parseInt(_options.display_value);
+			let color;
+			let radius;
+			if (parsed > 60) {
+				color = "red";
+			} else if (parsed > 30) {
+				color = "orange";
+			} else {
+				color = "green";
+			}
+			if (parsed < 20 && parsed > 0) {
+				radius = 20;
+			} else {
+				radius = parsed;
+			}
+			let vitesse;
+			if (parsed === 0) {
+				vitesse = "";
+			} else {
+				vitesse = parsed;
+			}
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			var windangle_id = id.find('.cmd[data-cmd_id=#windangle_id#]');
+			windangle_id.find('.state').empty().append(vitesse);
+			id.find("span[data-cmd_id=#windstrength_id#]").empty().append(vitesse);
+			chartwindDirection#uid#.series[0].update(
+										{
+										dial: {
+										radius: radius + "px",
+												rearLength: '20%',
+												backgroundColor: color
+										},
+												tooltip: {
+												valueSuffix: ' ° (' + vitesse + ')'
+												}
+										}
+			);
+		};
+		jeedom.cmd.update['#windstrength_id#']({display_value: '#windstrength#'});
+
+		jeedom.cmd.update['#guststrength_id#'] = function (_options) {
+			const parsed = parseInt(_options.display_value);
+			let color;
+			let radius;
+			if (parsed > 60) {
+				color = "red";
+			} else if (parsed > 30) {
+				color = "orange";
+			} else {
+				color = "green";
+			}
+			if (parsed < 20 && parsed > 0) {
+				radius = 20;
+			} else {
+				radius = parsed;
+			}
+			let vitesse;
+			if (parsed === 0) {
+				vitesse = "";
+			} else {
+				vitesse = parsed;
+			}
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			var gustangle_id = id.find('.cmd[data-cmd_id=#gustangle_id#]');
+			gustangle_id.find('.state').empty().append(vitesse);
+			id.find("span[data-cmd_id=#gustangle_id#]").empty().append(vitesse);
+			chartwindDirection#uid#.series[1].update(
+										{
+										dial: {
+										radius: radius + "px",
+												rearLength: '20%',
+												backgroundColor: color
+										},
+												tooltip: {
+												valueSuffix: ' ° (' + vitesse + ')'
+												}
+										}
+			);
+		};
+		jeedom.cmd.update['#guststrength_id#']({display_value: '#guststrength#'});
+
+		jeedom.cmd.update['#max_wind_str_id#'] = function (_options) {
+			var id = $('.netatmo[data-eqLogic_id=#id#]');
+			id.find("span[data-cmd_id=#max_wind_str_id#]").empty().append(_options.display_value + " km/h maximum");
+			chartwindDirection#uid#.series[0].update(
+				{
+					dataLabels: {
+						formatter: function () {
+							return '<span style="color:#339">' + _options.display_value + ' km/h max';
+						}
+					}
+				}
+			);
+		};
+		jeedom.cmd.update['#max_wind_str_id#']({display_value: '#max_wind_str#'});
+
+	</script>
+</div>

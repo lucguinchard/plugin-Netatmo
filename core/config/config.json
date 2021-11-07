@@ -1,0 +1,514 @@
+{
+	"NAPlug": {
+		"cmd": ["firmware_revision", "plug_connected_boiler", "rf_strength", "wifi_strength"]
+	},
+	"NATherm1": {
+		"cmd": 
+		[
+				"anticipating", "open_window", "temperature", "therm_setpoint_temperature", "therm_setpoint_mode", "therm_setpoint_start_time", "therm_setpoint_end_time",
+				"battery_level", "firmware_revision", "rf_strength", "boiler_status", "boiler_valve_comfort_boost", "reachable", "bridge", "battery_state"
+			
+			, "power_off", "power_to_away_mode", "power_to_frost_guard_mode", "power_to_program_mode", "power_to_max_mode", "power_to_manual_mode"
+		],
+		"bat_type": "3x1.5V AAA",
+		"bat_max": 6000,
+		"bat_min": 4200
+	},
+	"NAMain": {
+		"cmd": ["pressure", "absolutepressure", "co2", "noise", "temperature", "min_temp", "max_temp", "humidity"]
+	},
+	"NAModule1": {
+		"cmd": ["temperature", "min_temp", "max_temp", "humidity"],
+		"bat_type": "2x1.5V AAA",
+		"bat_max": 6000,
+		"bat_min": 3600
+	},
+	"NAModule2": {
+		"cmd": ["windangle", "windstrength", "gustangle", "guststrength", "max_wind_str"],
+		"bat_type": "4x1.5V AA",
+		"bat_max": 6000,
+		"bat_min": 3950
+	},
+	"NAModule3": {
+		"cmd": ["rain", "sum_rain_24", "sum_rain_1"],
+		"bat_type": "2x1.5V AAA",
+		"bat_max": 6000,
+		"bat_min": 3600
+	},
+	"NAModule4": {
+		"cmd": ["temperature", "min_temp", "max_temp", "humidity", "co2"],
+		"bat_type": "4x1.5V AAA",
+		"bat_max": 6000,
+		"bat_min": 4200
+	},
+	"commands": {
+		"power_off": {
+			"name": "Éteindre la chaudière",
+			"logicalId": "power_off",
+			"type": "action",
+			"subType": "other"
+		},
+		"power_to_away_mode": {
+			"name": "Mettre la chaudière en mode absent",
+			"logicalId": "power_to_away_mode",
+			"type": "action",
+			"subType": "other"
+		},
+		"power_to_frost_guard_mode": {
+			"name": "Mettre la chaudière en mode hors gel",
+			"logicalId": "power_to_frost_guard_mode",
+			"type": "action",
+			"subType": "other"
+		},
+		"power_to_program_mode": {
+			"name": "Mettre la chaudière en programe",
+			"logicalId": "power_to_program_mode",
+			"type": "action",
+			"subType": "other"
+		},
+		"power_to_max_mode": {
+			"name": "Mettre la chaudière à pleine puissance",
+			"logicalId": "power_to_max_mode",
+			"type": "action",
+			"subType": "other"
+		},
+		"power_to_manual_mode": {
+			"name": "Mettre la chaudière en mode manuel",
+			"logicalId": "power_to_manual_mode",
+			"type": "action",
+			"subType": "other"
+		},
+		"therm_setpoint_temperature": {
+			"name": "Consigne",
+			"logicalId": "therm_setpoint_temperature",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "THERMOSTAT_SETPOINT",
+			"unite": "°C",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 30
+			}
+		},
+		"therm_setpoint_mode": {
+			"name": "Mode",
+			"logicalId": "therm_setpoint_mode",
+			"type": "info",
+			"subType": "string",
+			"generic_type": "THERMOSTAT_MODE",
+			"unite": "",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			}
+		},
+		"therm_setpoint_start_time": {
+			"name": "therm_setpoint_start_time",
+			"logicalId": "therm_setpoint_start_time",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			}
+		},
+		"therm_setpoint_end_time": {
+			"name": "therm_setpoint_end_time",
+			"logicalId": "therm_setpoint_end_time",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			}
+		},
+		
+		"pressure": {
+			"name": "Pression",
+			"logicalId": "pressure",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "PRESSURE",
+			"unite": "Pa",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 1500
+			}
+		},
+		"absolutepressure": {
+			"name": "Pression Absolue",
+			"logicalId": "absolutepressure",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "PRESSURE",
+			"unite": "Pa",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 1500
+			}
+		},
+		"co2": {
+			"name": "CO2",
+			"logicalId": "co2",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "CO2",
+			"unite": "ppm",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 5000
+			}
+		},
+		"noise": {
+			"name": "Bruit",
+			"logicalId": "noise",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "NOISE",
+			"unite": "db",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 100
+			}
+		},
+		"temperature": {
+			"name": "Température",
+			"logicalId": "temperature",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "TEMPERATURE",
+			"unite": "°C",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": -20,
+				"maxValue": 80
+			}
+		},
+		"min_temp": {
+			"name": "Température min",
+			"logicalId": "min_temp",
+			"type": "info",
+			"isHistorized": 0,
+			"subType": "numeric",
+			"generic_type": "WEATHER_TEMPERATURE_MIN",
+			"unite": "°C",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": -20,
+				"maxValue": 80
+			}
+		},
+		"max_temp": {
+			"name": "Température max",
+			"logicalId": "max_temp",
+			"type": "info",
+			"isHistorized": 0,
+			"subType": "numeric",
+			"generic_type": "WEATHER_TEMPERATURE_MAX",
+			"unite": "°C",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": -20,
+				"maxValue": 80
+			}
+		},
+		"humidity": {
+			"name": "Humidité",
+			"logicalId": "humidity",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "HUMIDITY",
+			"unite": "%",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 100
+			}
+		},
+		"rain": {
+			"name": "Pluie",
+			"logicalId": "rain",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "RAIN_TOTAL",
+			"template": {
+				"dashboard": "core::rain",
+				"mobile": "core::rain"
+			},
+			"unite": "mm"
+		},
+		"sum_rain_24": {
+			"name": "Pluie 24H",
+			"logicalId": "sum_rain_24",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "RAIN_TOTAL",
+			"template": {
+				"dashboard": "core::rain",
+				"mobile": "core::rain"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 100
+			},
+			"unite": "mm"
+		},
+		"sum_rain_1": {
+			"name": "Pluie 1H",
+			"logicalId": "sum_rain_1",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "RAIN_TOTAL",
+			"template": {
+				"dashboard": "core::rain",
+				"mobile": "core::rain"
+			},
+			"configuration": {
+				"minValue": 0,
+				"maxValue": 30
+			},
+			"unite": "mm"
+		},
+		"windangle": {
+			"name": "Direction Vent",
+			"logicalId": "windangle",
+			"type": "info",
+			"template": {
+				"dashboard": "core::core::compass",
+				"mobile": "core::core::compass"
+			},
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "WIND_DIRECTION",
+			"unite": "°"
+		},
+		"windstrength": {
+			"name": "Vitesse Vent",
+			"logicalId": "windstrength",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"generic_type": "WIND_SPEED",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": "km/h"
+		},
+		"gustangle": {
+			"name": "Direction rafale",
+			"logicalId": "gustangle",
+			"type": "info",
+			"template": {
+				"dashboard": "core::core::compass",
+				"mobile": "core::core::compass"
+			},
+			"isHistorized": 1,
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": "°"
+		},
+		"guststrength": {
+			"name": "Vitesse rafale",
+			"logicalId": "guststrength",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": "km/h"
+		},
+		"max_wind_str": {
+			"name": "Vitesse Max",
+			"logicalId": "max_wind_str",
+			"type": "info",
+			"isHistorized": 1,
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": "km/h"
+		},
+		"firmware_revision": {
+			"name": "firmware_revision",
+			"logicalId": "firmware_revision",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"plug_connected_boiler": {
+			"name": "plug_connected_boiler",
+			"logicalId": "plug_connected_boiler",
+			"type": "info",
+			"subType": "string",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"rf_strength": {
+			"name": "rf_strength",
+			"logicalId": "rf_strength",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"wifi_strength": {
+			"name": "wifi_strength",
+			"logicalId": "wifi_strength",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"anticipating": {
+			"name": "Anticipation",
+			"logicalId": "anticipating",
+			"type": "info",
+			"subType": "binary",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"open_window": {
+			"name": "Open Window",
+			"logicalId": "open_window",
+			"type": "info",
+			"subType": "binary",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"battery_level": {
+			"name": "battery_level",
+			"logicalId": "battery_level",
+			"type": "info",
+			"subType": "string",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"boiler_status": {
+			"name": "boiler_status",
+			"logicalId": "boiler_status",
+			"type": "info",
+			"subType": "binary",
+			"generic_type": "THERMOSTAT_STATE",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"boiler_valve_comfort_boost": {
+			"name": "boiler_valve_comfort_boost",
+			"logicalId": "boiler_valve_comfort_boost",
+			"type": "info",
+			"subType": "binary",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"reachable": {
+			"name": "reachable",
+			"logicalId": "reachable",
+			"type": "info",
+			"subType": "string",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"bridge": {
+			"name": "bridge",
+			"logicalId": "bridge",
+			"type": "info",
+			"subType": "string",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		},
+		"battery_state": {
+			"name": "battery_state",
+			"logicalId": "battery_state",
+			"type": "info",
+			"subType": "string",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": ""
+		}
+	}
+}

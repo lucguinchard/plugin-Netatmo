@@ -1,0 +1,38 @@
+<div class="eqLogic eqLogic-widget noResize netatmo NAModule3" data-eqType="#eqType#" data-category="#category#" data-tags="#data-tags#"
+	style="width:180px;padding : 0px; border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#;  #style#"
+	data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
+	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
+	<center class="widget-name">
+		<a class="cmd pull-left" data-cmd_id="#rain_id#" onclick="jeedom.cmd.execute({id: '#refresh_id#'});">
+			<i class="fa fa-tint" style="color: lightcyan"></i>
+		</a>
+		<span class="statusCmd" style="position:absolute;bottom : 3px;left : 5px; width : 30px;z-index: 500;"></span>
+		<i class='fa fa-refresh pull-right cursor refresh tooltips' title="Rafraîchir" style="margin-top: 3px;margin-right: 3px;"></i>
+		<a href="#eqLink#">#name_display#</a>
+		<a class="cmd pull-right" data-cmd_id="#refresh_id#" onclick="jeedom.cmd.execute({id: '#refresh_id#'});">
+			<i class="fa fa-refresh"></i>
+		</a>
+		<span class="cmd cmd-widget" data-cmd_id="#refresh_id#" ></span>
+	</center>
+	<div class="reachable row">
+		<div class="col-xs-5">
+			#sum_rain_1_html#
+		</div>
+		<div class="col-xs-5">
+			#sum_rain_24_html#
+		</div>
+	</div>
+	<script type="text/javascript">
+		jeedom.cmd.update['#rain_id#'] = function (_options) {
+			const parsed = parseInt(_options.display_value);
+			var rain_id = $('.netatmo[data-eqLogic_id=#id#]').find("a[data-cmd_id=#rain_id#]");
+			rain_id.attr('title', "Pluie : " + _options.display_value + "mm");
+			if(parsed !== 0) {
+				rain_id.css('display', 'block');
+			} else {
+				rain_id.css('display', 'none');
+			}
+		};
+		jeedom.cmd.update['#rain_id#']({display_value: '#rain#'});
+	</script>
+</div>

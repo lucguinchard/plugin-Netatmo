@@ -1,0 +1,265 @@
+@font-face{
+	font-family:NetatmoStarckReg;
+	src:url(/plugins/Netatmo/3rdparty/Netatmo-API-PHP/Font/NetatmoStarckReg.woff) format('woff'),
+		url(/plugins/Netatmo/3rdparty/Netatmo-API-PHP/Font/NetatmoStarckReg.woff) format('woff')
+}
+
+
+@font-face {
+	font-family: "Digital-7";
+	src:  url("/core/template/dashboard/cmd.info.numeric.HygroThermographe/font/digital-7.eot") format("eot"),
+		url("/core/template/dashboard/cmd.info.numeric.HygroThermographe/font/digital-7.woff") format("woff"),
+		url("/core/template/dashboard/cmd.info.numeric.HygroThermographe/font/digital-7.ttf") format("truetype"),
+		url("/core/template/dashboard/cmd.info.numeric.HygroThermographe/font/digital-7.svg#Digital-7") format("svg");
+	font-weight:normal;
+	font-style:normal;
+}
+
+.netatmo .module {
+	padding: 5px;
+	margin: 10px;
+}
+
+.netatmo .consigneBox {
+	z-index: 4;
+}
+.netatmo .consigneBox, .netatmo .temperatureBox {
+	position: relative;
+	margin: 0 auto;
+	box-shadow: 0 1px 15px 0 rgba(0,0,0,.08), 0 5px 12px 0 rgba(50,50,50,.11);
+}
+
+.netatmo .consigneBox .top,    .netatmo .temperatureBox .top,
+.netatmo .consigneBox .botton, .netatmo .temperatureBox .botton,
+.netatmo .consigneBox .right, .netatmo .temperatureBox .right,
+.netatmo .consigneBox .left, .netatmo .temperatureBox .left {
+
+	position: absolute;
+	border-radius: 100%;
+}
+
+.netatmo .consigneBox .top,    .netatmo .temperatureBox .top,
+.netatmo .consigneBox .botton, .netatmo .temperatureBox .botton
+{
+	width: 100%;
+}
+
+.netatmo .consigneBox .top,    .netatmo .temperatureBox .top,
+.netatmo .consigneBox .botton, .netatmo .temperatureBox .botton,
+.netatmo .consigneBox .left, .netatmo .temperatureBox .left 
+{
+	left: 0;
+}
+
+.netatmo .consigneBox .top, .netatmo .consigneBox .botton {
+	height: 3px;
+}
+
+.netatmo .temperatureBox .top, .netatmo .temperatureBox .botton {
+	height: 5px;
+}
+
+.netatmo .top {
+	transform: translateY(-50%);
+}
+
+.netatmo .botton{
+	transform: translateY(50%);
+}
+
+.netatmo .left {
+	transform: translateX(-50%);
+}
+
+.netatmo .right {
+	transform: translateX(50%);
+}
+
+.netatmo .consigneBox .top, .netatmo .temperatureBox .top,
+.netatmo .consigneBox .left, .netatmo .temperatureBox .left,
+.netatmo .consigneBox .right, .netatmo .temperatureBox .right{
+	top: 0;
+}
+.netatmo .consigneBox .right, .netatmo .temperatureBox .right {
+	right: 0;
+}
+
+.netatmo .consigneBox .right, .netatmo .temperatureBox .right,
+.netatmo .consigneBox .left, .netatmo .temperatureBox .left {
+	width: 3px;
+	height: 100%;
+}
+
+.netatmo .consigneBox .botton, .netatmo .temperatureBox .botton {
+	bottom: 0;
+}
+
+.netatmo .consigneBox, .netatmo .consigneBox p {
+	width: 30px;
+	height: 30px;
+}
+.netatmo .consigneBox span,.netatmo .consigneBox p{
+	background-color: #434343;
+	color: #fff !important;
+	font-size: 20px;
+}
+
+.netatmo .temperatureBox, .netatmo .temperatureBox p{
+	width: 50px;
+	height: 50px;
+}
+.netatmo .temperatureBox span,.netatmo .temperatureBox p{
+	background-color: #fff;
+	color: #434343 !important;
+	font-size: 20px;
+}
+
+.netatmo .consigneBox p, .netatmo .temperatureBox p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Digital-7;
+}
+
+.netatmo .consigneBox p {
+	font-size: 15px;
+}
+
+.netatmo .temperatureBox p {
+	font-size: 25px;
+}
+
+.netatmo .btnChar {
+	box-shadow: 0 1px 15px 0 rgba(0,0,0,.08), 0 5px 12px 0 rgba(50,50,50,.11);
+	display: block;
+	width: 25px;
+	height: 25px;
+	font-family: Digital-7;
+	border-radius: 50%;
+	vertical-align: middle!important;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+/*
+.netatmo .btn-action i {
+	font-size: 1.9em;
+	margin-left: 5px;
+	color:#3498db;
+}*/
+
+.netatmo-station div.hygrothermographe .hygrothermographe-background{
+	width: 170px;
+	height: 170px;
+}
+
+.netatmo-station div.hygrothermographe{
+	position: relative;
+	font-family: "Digital-7";
+	position: absolute;
+}
+
+.netatmo-station div.hygrothermographe span{
+	position: absolute;
+	transform : scale(0.7,1);
+	color: #b4b4b4 !important;
+}
+
+.netatmo-station span.fontDigital.value{
+}
+.netatmo-station span.intNumTemp {
+	font-size:60px;
+	letter-spacing: 4px;
+	top: 60px;
+	right: 63px;
+}
+.netatmo-station span.decNumTemp {
+	font-size:40px;
+	top: 44px;
+	right: 55px;
+}
+.netatmo-station span.intNumHumidity {
+	font-size: 45px;
+	letter-spacing: 3px;
+	top: 110px;
+	right: 60px;
+}
+.netatmo-station span.decNumHumidity {
+	font-size:40px;
+	top: 154px;
+	right: 32px;
+}
+.netatmo-station span.uniteTemp {
+	top: 40px;
+}
+.netatmo-station span.uniteHumidity {
+	top: 95px;
+}
+.netatmo-station span.uniteTemp ,
+.netatmo-station span.uniteHumidity {
+	right: 60px;
+	font-weight: bold;
+}
+.netatmo-station span.numTempMax ,
+.netatmo-station span.numTempMin,
+.netatmo-station span.uniteTemp ,
+.netatmo-station span.uniteHumidity,
+.netatmo-station div.hygrothermographe span.co2,
+.netatmo-station div.hygrothermographe span.absolutepressure,
+.netatmo-station div.hygrothermographe span.pressure,
+.netatmo-station div.hygrothermographe span.noise {
+	font-family: "roboto";
+	font-size:1em;
+}
+
+.netatmo-station span.numTempMax ,
+.netatmo-station span.numTempMin {
+	right: 30px;
+}
+.netatmo-station div.hygrothermographe span.numTempMax {
+	color: lawngreen !important;
+	top: 60px;
+}
+.netatmo-station div.hygrothermographe span.numTempMin {
+	color: #dd8c1a !important;
+	top: 75px;
+}
+
+.netatmo-station div.hygrothermographe span.absolutepressure {
+	display:none;
+	color: #dd8c1a !important;
+	top: 60px;
+}
+
+.netatmo-station div.hygrothermographe span.pressure {
+	color: #dd8c1a !important;
+	top: 75px;
+}
+
+.netatmo-station div.hygrothermographe span.noise {
+	color: #dd8c1a !important;
+	top: 115px;
+}
+
+.netatmo-station div.hygrothermographe span.co2 {
+	color: #dd8c1a !important;
+	top: 100px;
+}
+
+.netatmo-station div.hygrothermographe span.co2,
+.netatmo-station div.hygrothermographe span.absolutepressure,
+.netatmo-station div.hygrothermographe span.pressure,
+.netatmo-station div.hygrothermographe span.noise {
+	font-size:1em;
+}
+
+.netatmo-station div.hygrothermographe span.co2,
+.netatmo-station div.hygrothermographe span.noise {
+	right: 100px;
+}
+
+.netatmo-station div.hygrothermographe span.absolutepressure,
+.netatmo-station div.hygrothermographe span.pressure {
+	font-size:0.9em;
+	right: 110px;
+}

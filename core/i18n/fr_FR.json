@@ -1,0 +1,83 @@
+{
+    "plugins\/Netatmo\/plugin_info\/configuration.php": {
+        "Client ID": "Client ID",
+        "Client secret": "Client secret",
+        "Nom d’utilisateur": "Nom d’utilisateur",
+        "Mot de passe": "Mot de passe",
+        "Récupérer aussi les stations des amis": "Récupérer aussi les stations des amis",
+        "Récupérer les infos du plugin": "Récupérer les infos du plugin",
+        "Netatmo Welcome": "Netatmo Welcome",
+        "Netatmo Thermostat": "Netatmo Thermostat",
+        "Synchroniser": "Synchroniser",
+        "Synchroniser mes équipements": "Synchroniser mes équipements",
+        "Synchronisation réussie": "Synchronisation réussie",
+        "Cela récupérera les identifiants configurés dans le plugin Netatmo Welcome, il faudra sauver avant de lancer la synchronisation. Voulez vous procéder ? ": "Cela récupérera les identifiants configurés dans le plugin Netatmo Welcome, il faudra sauver avant de lancer la synchronisation. Voulez vous procéder ? ",
+        "Cela récupérera les identifiants configurés dans le plugin Netatmo Thermostat, il faudra sauver avant de lancer la synchronisation. Voulez vous procéder ? ": "Cela récupérera les identifiants configurés dans le plugin Netatmo Thermostat, il faudra sauver avant de lancer la synchronisation. Voulez vous procéder ? "
+    },
+    "plugins\/Netatmo\/desktop\/modal\/health.php": {
+        "Image": "Image",
+        "Module": "Module",
+        "ID": "ID",
+        "Batterie": "Batterie",
+        "Serial": "Serial",
+        "Firmware": "Firmware",
+        "Wifi": "Wifi",
+        "RF": "RF",
+        "Date création": "Date création",
+        "Secteur": "Secteur"
+    },
+    "plugins\/Netatmo\/desktop\/php\/Netatmo.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Gestion": "Gestion",
+        "Configuration": "Configuration",
+        "Santé": "Santé",
+        "Mes Stations": "Mes Stations",
+        "Rechercher": "Rechercher",
+        "Vous n’avez pas encore de station Netatmo, cliquez sur configuration et cliquez sur synchroniser pour commencer": "Vous n’avez pas encore de station Netatmo, cliquez sur configuration et cliquez sur synchroniser pour commencer",
+        "Configuration avancée": "Configuration avancée",
+        "Dupliquer": "Dupliquer",
+        "Sauvegarder": "Sauvegarder",
+        "Supprimer": "Supprimer",
+        "Equipement": "Equipement",
+        "Commandes": "Commandes",
+        "Nom de l’’équipement météo Netatmo": "Nom de l’équipement météo Netatmo",
+        "Objet parent": "Objet parent",
+        "Aucun": "Aucun",
+        "Activer": "Activer",
+        "Visible": "Visible",
+        "Type": "Type",
+        "Station": "Station",
+        "Module extérieur": "Module extérieur",
+        "Module intérieur": "Module intérieur",
+        "Module pluie": "Module pluie",
+        "Anémomètre": "Anémomètre",
+        "Identifiant": "Identifiant",
+        "Firmware": "Firmware",
+        "Réception réseaux": "Réception réseaux",
+        "Météo Netatmo": "Météo Netatmo",
+        "Nom": "Nom",
+        "Option": "Option",
+        "Action": "Action"
+    },
+    "plugins\/Netatmo\/desktop\/js\/Netatmo.js": {
+        "Santé NetatmoWeather": "Santé NetatmoWeather",
+        "Nom": "Nom",
+        "Min": "Min",
+        "Max": "Max",
+        "Unité": "Unité",
+        "Afficher": "Afficher",
+        "Historiser": "Historiser",
+        "Tester": "Tester"
+    },
+    "plugins\/Netatmo\/core\/ajax\/Netatmo.ajax.php": {
+        "401 - Accès non autorisé": "401 - Accès non autorisé",
+        "Aucune méthode correspondante à : ": "Aucune méthode correspondante à : "
+    },
+    "plugins\/netatmoWeather\/core\/class\/netatmoWeather.class.php": {
+        "Erreur sur sync netatmo weather ": "Erreur sur sync netatmo weather ",
+        "Rafraichir": "Rafraichir"
+    },
+    "info.json": {
+        "Permet de récupérer les informations des stations météo Netatmo.": "Permet de récupérer les informations des stations météo Netatmo."
+    }
+}

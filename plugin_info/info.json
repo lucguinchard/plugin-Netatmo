@@ -1,0 +1,15 @@
+{
+  "id": "Netatmo",
+  "name": "Netatmo",
+  "description": "Plugin permettant la gestion des appareils Netatmo",
+  "licence": "GNU GPLv2",
+  "author": "Luc Guinchard",
+  "require": "4.0",
+  "category": "devicecommunication",
+  "display" : "panel",
+  "mobile" : "panel",
+  "hasDependency": false,
+  "hasOwnDeamon": false,
+  "changelog": "https://lucguinchard.github.io/plugin-Netatmo/changelog",
+  "documentation": "https://lucguinchard.github.io/plugin-Netatmo"
+}
