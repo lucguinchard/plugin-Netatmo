@@ -72,6 +72,24 @@ class NetatmoCmd extends cmd {
 					Netatmo::syncWeather();
 					Netatmo::syncEnergy();
 					break;
+				case 'therm_setpoint_temperature_up' :
+					$cmd = $eqLogic->getCmd(null, "therm_setpoint_temperature");
+					if(is_object($cmd)) {
+						$endtime = null;
+						$setpoint = $cmd->execCmd();
+						$setpoint += 0.5;
+						Netatmo::getClientTherm()->setToManualMode($bridge, $module_id, $setpoint, $endtime);
+					}
+					break;
+				case 'therm_setpoint_temperature_down' :
+					$cmd = $eqLogic->getCmd(null, "therm_setpoint_temperature");
+					if(is_object($cmd)) {
+						$endtime = null;
+						$setpoint = $cmd->execCmd();
+						$setpoint -= 0.5;
+						Netatmo::getClientTherm()->setToManualMode($bridge, $module_id, $setpoint, $endtime);
+					}
+					break;
 				default : 
 					log::add("Netatmo", 'warning', 'TODO:Créer la commande ' . $this->getLogicalId());
 			}

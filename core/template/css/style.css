@@ -20,6 +20,15 @@
 	margin: 10px;
 }
 
+.netatmo .widget-name .cmd {
+	margin: 3px !important;
+}
+
+.netatmo .not_reachable {
+	margin: 0 auto;
+	width: 100px; 
+}
+
 .netatmo .consigneBox {
 	z-index: 4;
 }
@@ -129,17 +138,18 @@
 	font-size: 25px;
 }
 
-.netatmo .btnChar {
+.netatmo .btn {
+	margin: 15px 5px;
 	box-shadow: 0 1px 15px 0 rgba(0,0,0,.08), 0 5px 12px 0 rgba(50,50,50,.11);
-	display: block;
+	display: inline-block;
 	width: 25px;
 	height: 25px;
 	font-family: Digital-7;
-	border-radius: 50%;
-	vertical-align: middle!important;
+	border-radius: 50% !important;
+	vertical-align: middle !important;
 	text-align: center;
-	font-weight: bold;
-	font-size: 20px;
+	font-weight: bold !important;
+	font-size: 20px !important;
 }
 /*
 .netatmo .btn-action i {
