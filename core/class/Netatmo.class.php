@@ -261,6 +261,7 @@ class Netatmo extends eqLogic {
 					$dashboard_data = $module;
 				}
 				foreach ($dashboard_data as $key => $value) {
+					if(empty($value)) continue;
 					//log::add(__CLASS__, 'debug', "dashboard_data" . print_r($dashboard_data, true));
 					$collectDateInt = null;
 					if(!empty($dashboard_data['time_utc'])){
