@@ -8,7 +8,7 @@
 				"anticipating", "open_window", "temperature", "therm_setpoint_temperature", "therm_setpoint_mode", "therm_setpoint_start_time", "therm_setpoint_end_time",
 				"battery_level", "firmware_revision", "rf_strength", "boiler_status", "boiler_valve_comfort_boost", "reachable", "bridge", "battery_state"
 			
-			, "power_off", "power_to_away_mode", "power_to_frost_guard_mode", "power_to_program_mode", "power_to_max_mode", "power_to_manual_mode", "therm_setpoint_temperature_up", "therm_setpoint_temperature_down"
+			, "power_off", "power_to_away_mode", "power_to_frost_guard_mode", "power_to_program_mode", "power_to_manual_mode", "therm_setpoint_temperature_up", "therm_setpoint_temperature_down"
 		],
 		"bat_type": "3x1.5V AAA",
 		"bat_max": 6000,
@@ -46,31 +46,37 @@
 			"name": "Éteindre la chaudière",
 			"logicalId": "power_off",
 			"type": "action",
-			"subType": "other"
+			"subType": "other",
+			"display": {
+				"icon": "<i class=\"fa fa-times off\"></i>"
+			}
 		},
 		"power_to_away_mode": {
 			"name": "Mettre la chaudière en mode absent",
 			"logicalId": "power_to_away_mode",
 			"type": "action",
-			"subType": "other"
+			"subType": "other",
+			"display": {
+				"icon": "<i class=\"icon jeedomapp-out\"></i>"
+			}
 		},
 		"power_to_frost_guard_mode": {
 			"name": "Mettre la chaudière en mode hors gel",
 			"logicalId": "power_to_frost_guard_mode",
 			"type": "action",
-			"subType": "other"
+			"subType": "other",
+			"display": {
+				"icon": "<i class=\"icon nature-snowflake hg\"></i>"
+			}
 		},
 		"power_to_program_mode": {
 			"name": "Mettre la chaudière en programe",
 			"logicalId": "power_to_program_mode",
 			"type": "action",
-			"subType": "other"
-		},
-		"power_to_max_mode": {
-			"name": "Mettre la chaudière à pleine puissance",
-			"logicalId": "power_to_max_mode",
-			"type": "action",
-			"subType": "other"
+			"subType": "other",
+			"display": {
+				"icon": "<i class=\"icon jeedomapp-in\"></i>"
+			}
 		},
 		"power_to_manual_mode": {
 			"name": "Mettre la chaudière en mode manuel",
