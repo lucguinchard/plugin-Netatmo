@@ -27,29 +27,41 @@ if (!isConnect()) {
 ?>
 <form class="form-horizontal">
 	<fieldset>
-		<div class="form-group">
-			<label class="col-lg-4 control-label">{{Client ID}}</label>
-			<div class="col-lg-4">
-				<input type="text" class="configKey form-control" data-l1key="client_id" placeholder="Client ID"/>
+		<div class="container">
+			<h3><i class="fas fa-exchange-alt"></i> {{Connexion API}}</h3>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">{{Client ID}}</label>
+				<div class="col-lg-4">
+					<input type="text" class="configKey form-control" data-l1key="client_id" placeholder="Client ID"/>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-4 control-label">{{Client secret}}</label>
-			<div class="col-lg-4">
-				<input type="text" class="configKey form-control" data-l1key="client_secret" placeholder="Client Secret"/>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">{{Client secret}}</label>
+				<div class="col-lg-4">
+					<input type="text" class="configKey form-control" data-l1key="client_secret" placeholder="Client Secret"/>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-4 control-label">{{Nom d’utilisateur}}</label>
-			<div class="col-lg-4">
-				<input type="text" class="configKey form-control" data-l1key="username" placeholder="Nom d’utilisateur"/>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">{{Nom d’utilisateur}}</label>
+				<div class="col-lg-4">
+					<input type="text" class="configKey form-control" data-l1key="username" placeholder="Nom d’utilisateur"/>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="col-lg-4 control-label">{{Mot de passe}}</label>
-			<div class="col-lg-4">
-				<input type="password" class="configKey form-control" data-l1key="password" placeholder="Mot de passe"/>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">{{Mot de passe}}</label>
+				<div class="col-lg-4">
+					<input type="password" class="configKey form-control" data-l1key="password" placeholder="Mot de passe"/>
+				</div>
+			</div>
+			<br/>
+			<h3><i class="fas fa-coffee"></i> {{Offrez-un café}}</h3>
+			<div class="form-group">
+				<div>
+					{{Ce plugin est entièrement gratuit et indépendant, Mais si cela vous enchante j’accepte les}} <a href="https://www.paypal.com/paypalme/lucguinchard" title="{{thé/café/bière}}" target="_blank"><i class="fas fa-coffee"></i></a>.
+				</div>
 			</div>
 		</div>
 	</fieldset>
+	<br/>
+	<br/>
 </form>

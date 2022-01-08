@@ -1,13 +1,13 @@
 {
 	"plugins\/Netatmo\/plugin_info\/configuration.php": {
-		"Connexion API": "Connexion API",
+		"Connexion API": "Connetion API",
 		"Client ID": "Client ID",
 		"Client secret": "Client secret",
-		"Nom d’utilisateur": "Nom d’utilisateur",
-		"Mot de passe": "Mot de passe",
-		"Offrez-un café": "Offrez-un café",
-		"Ce plugin est entièrement gratuit et indépendant, Mais si cela vous enchante j’accepte les": "Ce plugin est entièrement gratuit et indépendant, Mais si cela vous enchante j’accepte les",
-		"thé/café/bière": "thé/café/bière"
+		"Nom d’utilisateur": "User",
+		"Mot de passe": "Password",
+		"Offrez-un café": "Offer a coffee",
+		"Ce plugin est entièrement gratuit et indépendant, Mais si cela vous enchante j’accepte les": "This plugin is completely free and independent, But if you like it I accept the",
+		"thé/café/bière": "tea/coffee/beer"
 	},
 	"plugins\/Netatmo\/desktop\/modal\/health.php": {
 		"Image": "Image",
