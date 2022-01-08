@@ -59,10 +59,6 @@ class NetatmoCmd extends cmd {
 				case 'power_to_program_mode' :
 						Netatmo::getClientTherm()->setToProgramMode($bridge, $module_id);
 					break;
-				case 'power_to_max_mode' :
-						$endtime = null;
-						Netatmo::getClientTherm()->setToMaxMode($bridge, $module_id, $endtime);
-					break;
 				case 'power_to_manual_mode' :
 						$endtime = null;
 						$setpoint = 15;
