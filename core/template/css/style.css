@@ -139,7 +139,7 @@
 }
 
 .netatmo .btn {
-	margin: 15px 5px;
+	margin: 5px 5px;
 	box-shadow: 0 1px 15px 0 rgba(0,0,0,.08), 0 5px 12px 0 rgba(50,50,50,.11);
 	display: inline-block;
 	width: 25px;
@@ -185,7 +185,7 @@
 }
 .netatmo-station span.decNumTemp {
 	font-size:40px;
-	top: 44px;
+	top: 65px;
 	right: 55px;
 }
 .netatmo-station span.intNumHumidity {
@@ -220,6 +220,10 @@
 .netatmo-station div.hygrothermographe span.noise {
 	font-family: "roboto";
 	font-size:1em;
+}
+
+.netatmo-station div.cmd-widget {
+	position:initial !important;
 }
 
 .netatmo-station span.numTempMax ,

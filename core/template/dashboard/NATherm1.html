@@ -1,4 +1,4 @@
-<div class="eqLogic-widget netatmo allowResize allowReorderCmd" data-category="heating"
+<div class="eqLogic-widget netatmo allowResize allowReorderCmd NATherm" data-category="heating"
 	style="border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#; width:#width#; height:130px; #style#"
 	data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
 	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
@@ -6,13 +6,13 @@
 		<span class="statusCmd"></span>
 		<i class='fa fa-refresh pull-right cursor refresh' title="Rafraîchir"></i>
 		<a class="cmd pull-left" data-cmd_id="#boiler_status_id#">
-			<i class="icon jeedom-feu"></i>
+			<i class="icon jeedom-pilote-conf"></i>
 		</a>
 		<a class="cmd pull-left" data-cmd_id="#anticipating_id#">
-			<i class="icon divers-circular114"></i>
+			<i class="icon jeedom-thermometre-celcius"></i>
 		</a>
-		<a class="cmd pull-left" data-cmd_id="#anticipating_id#" title="Changer commandes">
-			<i class="fa fa-retweet cursor changecmd"></i>
+		<a class="cmd pull-left" data-cmd_id="#open_window_id#" title="open_window_name">
+			<i class="icon jeedom-fenetre-ouverte"></i>
 		</a>
 		<a href="#eqLink#">#name_display#</a>
 	</center>
@@ -20,54 +20,50 @@
 		not_reachable
 	</div>
 	<div class="reachable row">
-		<div class="col-xs-5">
+		<div class="col-xs-5" style="padding: 0px !important;">
 			<div class="module">
 				<div class="consigneBox">
 					<span class="top"></span>
 					<span class="left"></span>
 					<span class="right"></span>
 					<span class="botton"></span>
-					<p class="cmd history" data-cmd_id="#therm_setpoint_temperature_id#"></p>
+					<p class="cmd cmd-widget history cursor" data-type="info" data-cmd_id="#therm_setpoint_temperature_id#"></p>
 				</div>
 				<div class="temperatureBox">
 					<span class="top"></span>
 					<span class="left"></span>
 					<span class="right"></span>
 					<span class="botton"></span>
-					<p class="cmd history" data-cmd_id="#temperature_id#">#temperature#</p>
+					<p class="cmd cmd-widget history cursor" data-type="info" data-cmd_id="#temperature_id#"></p>
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-1">
-			<a class="cmd btn" data-type="action" data-cmd_id="#therm_setpoint_temperature_up_id#" title="#therm_setpoint_temperature_up_name#"
+		<div class="col-xs-2" style="padding: 12px 0px !important;">
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#therm_setpoint_temperature_up_id#" title="#therm_setpoint_temperature_up_name#"
 				onclick="jeedom.cmd.execute({id: '#therm_setpoint_temperature_up_id#'});">
 				<span>+</span>
 			</a>
-			<a class="cmd btn" data-type="action" data-cmd_id="#therm_setpoint_temperature_down_id#" title="#therm_setpoint_temperature_down_name#"
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#therm_setpoint_temperature_down_id#" title="#therm_setpoint_temperature_down_name#"
 				onclick="jeedom.cmd.execute({id: '#therm_setpoint_temperature_down_id#'});">
 				<span>-</span>
 			</a>
 		</div>
-		<div class="col-xs-5">
-			<a class="cmd btn" data-type="action" data-cmd_id="#power_off_id#" title="#power_off_name#"
+		<div class="col-xs-5" style="padding: 0px !important;">
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#power_off_id#" title="#power_off_name#"
 				onclick="jeedom.cmd.execute({id: '#power_off_id#'});">
-				<i class="fa fa-times off"></i>
+				#power_off_icon#
 			</a>
-			<a class="cmd btn" data-type="action" data-cmd_id="#power_to_program_mode_id#" title="#power_to_program_mode_name#"
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#power_to_program_mode_id#" title="#power_to_program_mode_name#"
 				onclick="jeedom.cmd.execute({id: '#power_to_program_mode_id#'});">
-				<i class="fa fa-cog program"></i>
+				#power_to_program_mode_icon#
 			</a>
-			<a class="cmd btn" data-type="action" data-cmd_id="#power_to_away_mode_id#" title="#power_to_away_mode_name#"
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#power_to_away_mode_id#" title="#power_to_away_mode_name#"
 				onclick="jeedom.cmd.execute({id: '#power_to_away_mode_id#'});">
-				<i class="icon jeedom-mouvement away"></i>
+				#power_to_away_mode_icon#
 			</a>
-			<a class="cmd btn" data-type="action" data-cmd_id="#power_to_frost_guard_mode_id#" title="#power_to_frost_guard_mode_name#"
+			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#power_to_frost_guard_mode_id#" title="#power_to_frost_guard_mode_name#"
 				onclick="jeedom.cmd.execute({id: '#power_to_frost_guard_mode_id#'});">
-				<i class="icon nature-snowflake hg"></i>
-			</a>
-			<a class="cmd btn" data-type="action" data-cmd_id="#power_to_max_mode_id#" title="#power_to_max_mode_name#"
-				onclick="jeedom.cmd.execute({id: '#power_to_max_mode_id#'});">
-				<i class="icon nature-weather1 max"></i>
+				#power_to_frost_guard_mode_icon#
 			</a>
 		</div>
 	</div>
@@ -91,18 +87,34 @@
 		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
 		if(_options.display_value == '1') {
 			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("color", "orange");
+			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("display", "block");
 		} else {
-			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("color", "rgb(240, 240, 240)");
+			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("color", "transparent");
+			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("display", "none");
 		}
 	};
 	jeedom.cmd.update['#anticipating_id#']({display_value: '#anticipating#'});
+
+	jeedom.cmd.update['#open_window_id#'] = function(_options){
+		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		if(_options.display_value == '1') {
+			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("color", "orange");
+			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("display", "block");
+		} else {
+			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("color", "transparent");
+			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("display", "none");
+		}
+	};
+	jeedom.cmd.update['#open_window_id#']({display_value: '#open_window#'});
 	
 	jeedom.cmd.update['#boiler_status_id#'] = function(_options){
 		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
 		if(_options.display_value == '1') {
 			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("color", "orange");
+			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("display", "block");
 		} else {
-			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("color", "rgb(240, 240, 240)");
+			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("color", "transparent");
+			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("display", "none");
 		}
 	};
 	jeedom.cmd.update['#boiler_status_id#']({display_value: '#boiler_status#'});
@@ -115,7 +127,13 @@
 
 	jeedom.cmd.update['#therm_setpoint_temperature_id#'] = function(_options){
 		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		netatmo.find('p[data-cmd_id=#therm_setpoint_temperature_id#]').empty().append(_options.display_value);
+		var therm_setpoint_temperature = _options.display_value;
+		if(therm_setpoint_temperature == '0') {
+			therm_setpoint_temperature = "OFF";
+		} else if(therm_setpoint_temperature == '30') {
+			therm_setpoint_temperature = "MAX";
+		}
+		netatmo.find('p[data-cmd_id=#therm_setpoint_temperature_id#]').empty().append(therm_setpoint_temperature);
 	};
 	jeedom.cmd.update['#therm_setpoint_temperature_id#']({display_value: '#therm_setpoint_temperature#'});
 

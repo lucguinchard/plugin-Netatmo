@@ -1,5 +1,5 @@
 <div class="eqLogic eqLogic-widget noResize netatmo netatmo-station NAModule1" data-eqType="#eqType#" data-category="#category#" data-tags="#data-tags#"
-	style="width:180px; height:180px;padding : 0px; border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#;  #style#"
+	style="width:180px; height:200px;padding : 0px; border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#;  #style#"
 	data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
 	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
 	<center class="widget-name">
@@ -11,19 +11,17 @@
 	<div class="col-xs-12">
 		<div class="hygrothermographe">
 			<img class="hygrothermographe-background" src="core/template/dashboard/cmd.info.numeric.HygroThermographe/No.ext_100_Dark.png"></img>
-			<span class="cmd intNumTemp" data-cmd_id="#temperature_id#"></span>
-			<span class="decNumTemp"></span>
-			<span class="uniteTemp">°C</span>
-			<span class="cmd intNumHumidity" data-cmd_id="#humidity_id#"></span>
-			<span class="decNumHumidity"></span>
-			<span class="uniteHumidity">%</span>
+			<div class="cmd cmd-widget history cursor" data-type="info" data-cmd_id="#temperature_id#">
+				<span class="intNumTemp"></span>
+				<span class="decNumTemp"></span>
+				<span class="uniteTemp">°C</span>
+			</div>
+			<div class="cmd cmd-widget history cursor" data-type="info" data-cmd_id="#humidity_id#">
+				<span class="intNumHumidity"></span>
+				<span class="uniteHumidity">%</span>
+			</div>
 			<span class="cmd numTempMin" data-cmd_id="#min_temp_id#"></span>
 			<span class="cmd numTempMax" data-cmd_id="#max_temp_id#"></span>
-
-			<span class="decNumTemp value"></span>
-			<span class="uniteTemp">°C</span>
-			<span class="decNumHumidity value"></span>
-			<span class="uniteHumidity">%</span>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -40,7 +38,7 @@
 
 		jeedom.cmd.update['#humidity_id#'] = function (_options) {
 			var id = $('.netatmo[data-eqLogic_id=#id#]');
-			id.find("span[data-cmd_id=#humidity_id#]").empty().append(_options.display_value);
+			id.find(".intNumHumidity").empty().append(_options.display_value);
 		};
 		jeedom.cmd.update['#humidity_id#']({display_value: '#humidity#'});
 		
