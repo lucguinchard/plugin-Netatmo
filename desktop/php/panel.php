@@ -103,3 +103,4 @@ if ($_SESSION['user']->getOptions('displayObjetByDefault') == 1 && init('report'
 
 <?php
 include_file('desktop', 'panel', 'js', $pluginName);
+//include_file('/desktop/common', 'ui', 'js');
