@@ -85,18 +85,18 @@ class Netatmo extends eqLogic {
 	}
 
 	public static function cronDaily() {
-		Netatmo::syncDevice();
+		Netatmo::syncDevice('info');
 	}
 
 	public static function cron15() {
-		Netatmo::syncWeather();
+		Netatmo::syncWeather('info');
 	}
 
 	public static function cron5() {
-		Netatmo::syncEnergy();
+		Netatmo::syncEnergy('info');
 	}
 
-	public static function syncDevice() {
+	public static function syncDevice($logTry = 'error') {
 		log::add(__CLASS__, 'debug', "syncDevice");
 		$client = Netatmo::getClient();
 		if($client != null) {
@@ -158,13 +158,13 @@ class Netatmo extends eqLogic {
 				return true;
 			} catch (Exception $ex) {
 				Netatmo::$_client = null;
-				log::add(__CLASS__, 'error', __('Erreur sur syncDevice Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
+				log::add(__CLASS__, $logTry, __('Erreur sur syncDevice Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
 				return false;
 			}
 		}
 	}
 
-	public static function syncWeather() {
+	public static function syncWeather($logTry = 'error') {
 		log::add(__CLASS__, 'debug', "syncWeather");
 		$client = Netatmo::getClient();
 		if($client != null) {
@@ -176,13 +176,13 @@ class Netatmo extends eqLogic {
 				return true;
 			} catch (Exception $ex) {
 				Netatmo::$_client = null;
-				log::add(__CLASS__, 'error', __('Erreur sur syncWeather Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
+				log::add(__CLASS__, $logTry, __('Erreur sur syncWeather Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
 				return false;
 			}
 		}
 	}
 
-	public static function syncEnergy() {
+	public static function syncEnergy($logTry = 'error') {
 		log::add(__CLASS__, 'debug', "syncEnergy");
 		$client = Netatmo::getClientTherm();
 		if($client != null) {
@@ -231,7 +231,7 @@ class Netatmo extends eqLogic {
 				return true;
 			} catch (Exception $ex) {
 				Netatmo::$_clientTherm = null;
-				log::add(__CLASS__, 'error', __('Erreur sur syncEnergy Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
+				log::add(__CLASS__, $logTry, __('Erreur sur syncEnergy Netatmo ', __FILE__) . ' : ' . $ex->getMessage());
 				return false;
 			}
 		}
