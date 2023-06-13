@@ -5,19 +5,22 @@
 	<center class="widget-name">
 		<span class="statusCmd"></span>
 		<i class='fa fa-refresh pull-right cursor refresh' title="Rafraîchir"></i>
-		<a class="cmd pull-left" data-cmd_id="#boiler_status_id#">
-			<i class="icon jeedom-pilote-conf"></i>
-		</a>
-		<a class="cmd pull-left" data-cmd_id="#anticipating_id#">
-			<i class="icon jeedom-thermometre-celcius"></i>
-		</a>
-		<a class="cmd pull-left" data-cmd_id="#open_window_id#" title="open_window_name">
-			<i class="icon jeedom-fenetre-ouverte"></i>
-		</a>
+		<div class="reachable">
+			<a class="cmd pull-left" data-cmd_id="#boiler_status_id#">
+					<i class="icon jeedom-pilote-conf"></i>
+			</a>
+			<a class="cmd pull-left" data-cmd_id="#anticipating_id#">
+					<i class="icon jeedom-thermometre-celcius"></i>
+			</a>
+			<a class="cmd pull-left" data-cmd_id="#open_window_id#" title="open_window_name">
+					<i class="icon jeedom-fenetre-ouverte"></i>
+			</a>
+		</div>
 		<a href="#eqLink#">#name_display#</a>
 	</center>
 	<div class="not_reachable">
-		not_reachable
+		L’appareil pas atteignable.<br/>
+		#battery_state_html#
 	</div>
 	<div class="reachable row">
 		<div class="col-xs-5" style="padding: 0px !important;">
