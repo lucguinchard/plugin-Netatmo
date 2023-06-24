@@ -74,6 +74,7 @@ class NetatmoCmd extends cmd {
 						$endtime = null;
 						$setpoint = $cmd->execCmd();
 						$setpoint += 0.5;
+						$eqLogic->checkAndUpdateCmd("therm_setpoint_temperature", $setpoint);
 						Netatmo::getClientTherm()->setToManualMode($bridge, $module_id, $setpoint, $endtime);
 					}
 					break;
@@ -83,6 +84,7 @@ class NetatmoCmd extends cmd {
 						$endtime = null;
 						$setpoint = $cmd->execCmd();
 						$setpoint -= 0.5;
+						$eqLogic->checkAndUpdateCmd("therm_setpoint_temperature", $setpoint);
 						Netatmo::getClientTherm()->setToManualMode($bridge, $module_id, $setpoint, $endtime);
 					}
 					break;

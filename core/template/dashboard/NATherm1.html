@@ -75,65 +75,71 @@
 <script>
 	
 	jeedom.cmd.update['#reachable_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		if(_options.display_value == '1') {
-			netatmo.find('.not_reachable').css('display', 'none');
-			netatmo.find('.reachable').css('display', 'block');
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let not_reachable = netatmo.find('.not_reachable');
+		let reachable = netatmo.find('.reachable');
+		if(_options.display_value === '1') {
+			not_reachable.css('display', 'none');
+			reachable.css('display', 'block');
 		} else {
-			netatmo.find('.reachable').css('display', 'none');
-			netatmo.find('.not_reachable').css('display', 'block');
+			reachable.css('display', 'none');
+			not_reachable.css('display', 'block');
 		}
 	};
 	jeedom.cmd.update['#reachable_id#']({display_value: '#reachable#'});
 
 	jeedom.cmd.update['#anticipating_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		if(_options.display_value == '1') {
-			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("color", "orange");
-			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("display", "block");
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let anticipating = netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i');
+		if(_options.display_value === '1') {
+			anticipating.css("color", "orange");
+			anticipating.css("display", "block");
 		} else {
-			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("color", "transparent");
-			netatmo.find('.cmd[data-cmd_id=#anticipating_id#] i').css("display", "none");
+			anticipating.css("color", "transparent");
+			anticipating.css("display", "none");
 		}
 	};
 	jeedom.cmd.update['#anticipating_id#']({display_value: '#anticipating#'});
 
 	jeedom.cmd.update['#open_window_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		if(_options.display_value == '1') {
-			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("color", "orange");
-			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("display", "block");
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let open_window = netatmo.find('.cmd[data-cmd_id=#open_window_id#] i');
+		if(_options.display_value === '1') {
+			open_window.css("color", "orange");
+			open_window.css("display", "block");
 		} else {
-			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("color", "transparent");
-			netatmo.find('.cmd[data-cmd_id=#open_window_id#] i').css("display", "none");
+			open_window.css("color", "transparent");
+			open_window.css("display", "none");
 		}
 	};
 	jeedom.cmd.update['#open_window_id#']({display_value: '#open_window#'});
 	
 	jeedom.cmd.update['#boiler_status_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		if(_options.display_value == '1') {
-			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("color", "orange");
-			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("display", "block");
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let boiler_status = netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i');
+		console.log(_options.display_value+'(' + _options.display_value + ')')
+		if(_options.display_value === '1') {
+			boiler_status.css("color", "orange");
+			boiler_status.css("display", "block");
 		} else {
-			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("color", "transparent");
-			netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i').css("display", "none");
+			boiler_status.css("color", "transparent");
+			boiler_status.css("display", "none");
 		}
 	};
 	jeedom.cmd.update['#boiler_status_id#']({display_value: '#boiler_status#'});
 
 	jeedom.cmd.update['#temperature_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
 		netatmo.find('p[data-cmd_id=#temperature_id#]').empty().append(_options.display_value);
 	};
 	jeedom.cmd.update['#temperature_id#']({display_value: '#temperature#'});
 
 	jeedom.cmd.update['#therm_setpoint_temperature_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		var therm_setpoint_temperature = _options.display_value;
-		if(therm_setpoint_temperature == '0') {
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let therm_setpoint_temperature = _options.display_value;
+		if(therm_setpoint_temperature === '0') {
 			therm_setpoint_temperature = "OFF";
-		} else if(therm_setpoint_temperature == '30') {
+		} else if(therm_setpoint_temperature === '30') {
 			therm_setpoint_temperature = "MAX";
 		}
 		netatmo.find('p[data-cmd_id=#therm_setpoint_temperature_id#]').empty().append(therm_setpoint_temperature);
@@ -141,11 +147,13 @@
 	jeedom.cmd.update['#therm_setpoint_temperature_id#']({display_value: '#therm_setpoint_temperature#'});
 
 	jeedom.cmd.update['#therm_setpoint_mode_id#'] = function(_options){
-		var netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		console.log(_options.display_value+'(' + _options.display_value + ')')
 		switch (_options.display_value) {
 			case 'schedule': break;
 			case 'away': break;
 			case 'hg': break;
+			case 'manual': break;
 		}
 	};
 	jeedom.cmd.update['#therm_setpoint_mode_id#']({display_value: '#therm_setpoint_mode#'});

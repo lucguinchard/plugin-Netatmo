@@ -6,7 +6,7 @@
 		"cmd": 
 		[
 				"anticipating", "open_window", "temperature", "therm_setpoint_temperature", "therm_setpoint_mode", "therm_setpoint_start_time", "therm_setpoint_end_time",
-				"battery_level", "firmware_revision", "rf_strength", "boiler_status", "boiler_valve_comfort_boost", "reachable", "bridge", "battery_state"
+				"firmware_revision", "rf_strength", "boiler_status", "boiler_valve_comfort_boost", "reachable", "bridge", "battery_state", "battery_percent"
 			
 			, "power_off", "power_to_away_mode", "power_to_frost_guard_mode", "power_to_program_mode", "power_to_manual_mode", "therm_setpoint_temperature_up", "therm_setpoint_temperature_down"
 		],
@@ -86,13 +86,13 @@
 		},
 		"therm_setpoint_temperature_up": {
 			"name": "Monter la consigne",
-			"logicalId": "power_to_manual_mode",
+			"logicalId": "therm_setpoint_temperature_up",
 			"type": "action",
 			"subType": "other"
 		},
 		"therm_setpoint_temperature_down": {
 			"name": "Diminuer la consigne",
-			"logicalId": "power_to_manual_mode",
+			"logicalId": "therm_setpoint_temperature_down",
 			"type": "action",
 			"subType": "other"
 		},
@@ -461,17 +461,6 @@
 			},
 			"unite": ""
 		},
-		"battery_level": {
-			"name": "battery_level",
-			"logicalId": "battery_level",
-			"type": "info",
-			"subType": "string",
-			"template": {
-				"dashboard": "core::line",
-				"mobile": "core::line"
-			},
-			"unite": ""
-		},
 		"boiler_status": {
 			"name": "boiler_status",
 			"logicalId": "boiler_status",
@@ -527,6 +516,21 @@
 				"mobile": "core::line"
 			},
 			"unite": ""
+		},
+		"battery_percent": {
+			"name": "battery_percent",
+			"logicalId": "battery_percent",
+			"type": "info",
+			"subType": "numeric",
+			"template": {
+				"dashboard": "core::line",
+				"mobile": "core::line"
+			},
+			"unite": "%",
+			"display": {
+				"icon": "<i class=\"fas fa-battery-full\"></i>",
+				"generic_type": "BATTERY"
+			}
 		}
 	}
 }

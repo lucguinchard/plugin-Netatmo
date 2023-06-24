@@ -252,22 +252,9 @@ class Netatmo extends eqLogic {
 				if(!empty($module['firmware'])) {
 					$eqLogic->setConfiguration('firmware', $module['firmware']);
 				}
-				if(!empty($module['battery_level'])) {
-					$bat_min = Netatmo::getGConfig($module['type'].'::bat_min');
-					if(!empty($bat_min)) {
-						$bat_max = Netatmo::getGConfig($module['type'].'::bat_max');
-						log::add(__CLASS__, 'debug', "bat_max: " . $bat_min . "  →  " . $bat_max);
-						$battery_level = $module['battery_level'];
-						if($battery_level <= $bat_min) {
-							$eqLogic->batteryStatus(0);
-						} elseif ($battery_level >= $bat_max) {
-							$eqLogic->batteryStatus(100);
-						} else {
-							$eqLogic->batteryStatus(round(($battery_level - $bat_min) / ($bat_max - $bat_min) * 100, 0));
-						}
-					}
+				if(!empty($module['battery_percent'])) {
+					$eqLogic->batteryStatus($module['battery_percent']);
 				}
-				//$eqLogic->batteryStatus(round(($module['battery_vp'] - Netatmo::getGConfig($module['type'].'::bat_min')) / (Netatmo::getGConfig($module['type'].'::bat_max') - Netatmo::getGConfig($module['type'].'::bat_min')) * 100, 0));
 				$eqLogic->save(true);
 				if($dashboardData) {
 					if(!empty($module[$dashboardData])){
