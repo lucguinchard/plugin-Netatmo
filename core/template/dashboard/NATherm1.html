@@ -1,5 +1,5 @@
 <div class="eqLogic-widget netatmo allowResize allowReorderCmd NATherm" data-category="heating"
-	style="border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#; width:#width#; height:130px; #style#"
+	style="border:#border#; border-radius:#border-radius#;background-color:#background-color#; color:#color#; width:#width#; height:160px; #style#"
 	data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#">
 	<link rel="stylesheet" href="plugins/Netatmo/core/template/css/style.css"/>
 	<center class="widget-name">
@@ -40,6 +40,7 @@
 					<p class="cmd cmd-widget history cursor" data-type="info" data-cmd_id="#temperature_id#"></p>
 				</div>
 			</div>
+			<p style="position: relative;left: 20px;" class="cmd" data-type="info" data-cmd_id="#therm_setpoint_end_time_id#"></p>
 		</div>
 		<div class="col-xs-2" style="padding: 12px 0px !important;">
 			<a class="cmd cmd-widget btn" data-type="action" data-cmd_id="#therm_setpoint_temperature_up_id#" title="#therm_setpoint_temperature_up_name#"
@@ -117,7 +118,6 @@
 	jeedom.cmd.update['#boiler_status_id#'] = function(_options){
 		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
 		let boiler_status = netatmo.find('.cmd[data-cmd_id=#boiler_status_id#] i');
-		console.log(_options.display_value+'(' + _options.display_value + ')')
 		if(_options.display_value === '1') {
 			boiler_status.css("color", "orange");
 			boiler_status.css("display", "block");
@@ -146,9 +146,21 @@
 	};
 	jeedom.cmd.update['#therm_setpoint_temperature_id#']({display_value: '#therm_setpoint_temperature#'});
 
+	jeedom.cmd.update['#therm_setpoint_end_time_id#'] = function(_options){
+		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
+		let result;
+		if(_options.display_value != '0') {
+			let date = new Date(Number(_options.display_value) * 1000);
+			result = "Manual boost jusqu’à " + date.getHours() + ":" + date.getMinutes();
+		} else {
+			result = 'PAS DE FIN';
+		}
+		netatmo.find('.cmd[data-cmd_id=#therm_setpoint_end_time_id#]').empty().append(result);
+	};
+	jeedom.cmd.update['#therm_setpoint_end_time_id#']({display_value: '#therm_setpoint_end_time#'});
+
 	jeedom.cmd.update['#therm_setpoint_mode_id#'] = function(_options){
 		let netatmo = $('.netatmo[data-eqLogic_uid=#uid#]');
-		console.log(_options.display_value+'(' + _options.display_value + ')')
 		switch (_options.display_value) {
 			case 'schedule': break;
 			case 'away': break;
