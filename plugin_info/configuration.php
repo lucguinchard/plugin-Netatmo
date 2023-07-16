@@ -28,17 +28,29 @@ if (!isConnect()) {
 <form class="form-horizontal">
 	<fieldset>
 		<div class="container">
+			<h3><i class="fas fa-book"></i> {{Installation}}</h3>
+			<p>Cette application utilise une connection avec la société Netatmo.</p>
+			<p>Depuis votre compte Netatmo, vous devez créer une application : <a href="https://dev.netatmo.com/apps" target="_blank">My Apps Netatmo</a>.</p>
+			<p>Merci de remplir les informations ci-dessous pour le bon fonctionnement du plugin.</p>
 			<h3><i class="fas fa-exchange-alt"></i> {{Connexion API}}</h3>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">{{Client ID}}</label>
 				<div class="col-lg-4">
 					<input type="text" class="configKey form-control" data-l1key="client_id" placeholder="Client ID"/>
 				</div>
+				<label class="col-lg-2 control-label">{{Token d’accès}}</label>
+				<div class="col-lg-4">
+					<input type="text" class="configKey form-control" data-l1key="access_token" placeholder="access_token"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-lg-2 control-label">{{Client secret}}</label>
 				<div class="col-lg-4">
 					<input type="text" class="configKey form-control" data-l1key="client_secret" placeholder="Client Secret"/>
+				</div>
+				<label class="col-lg-2 control-label">{{Token de mise à jour}}</label>
+				<div class="col-lg-4">
+					<input type="text" class="configKey form-control" data-l1key="refresh_token" placeholder="refresh_token"/>
 				</div>
 			</div>
 			<div class="form-group">

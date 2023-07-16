@@ -32,6 +32,11 @@ function Netatmo_update()
 		config::save('username', $eqLogic->getConfiguration('username'), '');
 		config::save('password', $eqLogic->getConfiguration('password'), '');
 	}
+	$accessToken = config::byKey('access_token', 'Netatmo');
+	if (empty($accessToken)) {
+		config::save('access_token', $eqLogic->getConfiguration('access_token'), '');
+		config::save('refresh_token', $eqLogic->getConfiguration('refresh_token'), '');
+	}
 	foreach (Netatmo::byType('Netatmo') as $eqLogic) {
 		$eqLogic->save();
 	}

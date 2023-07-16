@@ -38,11 +38,14 @@ class Netatmo extends eqLogic {
 		$client_secret = config::byKey('client_secret', __CLASS__);
 		$username = config::byKey('username', __CLASS__);
 		$password = config::byKey('password', __CLASS__);
+		$accessToken = config::byKey('access_token', __CLASS__);
+		$refreshToken = config::byKey('refresh_token', __CLASS__);
 		if(empty($client_id) || empty($client_secret) || empty($username) || empty($password)) return null;
 		return array(
 				'client_id' => $client_id,
 				'client_secret' => $client_secret,
 				'username' => $username,
+				'access_token' => $accessToken,
 				'password' => $password,
 				'scope' => implode(' ', NAScopes::$validScopes)
 		);
@@ -237,7 +240,7 @@ class Netatmo extends eqLogic {
 		}
 	}
 
-	private static function syncModuleList($moduleList, $id = "_id", $dashboardData = "dashboard_data") {
+	public static function syncModuleList($moduleList, $id = "_id", $dashboardData = "dashboard_data") {
 		if(!empty($moduleList)){
 			foreach ($moduleList as $module) {
 				log::add(__CLASS__, 'debug', "Traitement : " . print_r($module,true));
