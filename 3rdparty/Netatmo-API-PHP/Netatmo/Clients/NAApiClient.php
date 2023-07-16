@@ -425,12 +425,14 @@ class NAApiClient
     }
 
   /**
+   * Deprecated - This method will be deprecated in october 2022
    * Get access token from OAuth2.0 token endpoint with basic user
    * credentials.
    *
    * This function will only be activated if both username and password
    * are setup correctly.
    *
+   * @deprecated <a href="https://dev.netatmo.com/apidocumentation/oauth#client-credential">This method will be deprecated in october 2022</a>
    * @param $username
    *   Username to be check with.
    * @param $password
