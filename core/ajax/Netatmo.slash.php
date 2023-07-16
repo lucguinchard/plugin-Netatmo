@@ -17,41 +17,62 @@ $eqLogicList = eqLogic::byType($plugin->getId());
 * If you don't known how to register a webhook, or simply need ore information please refer to documentation: https://dev.netatmo.com/doc/webhooks)
 */
 
-
 //Get the post JSON sent by Netatmo servers
 $jsonData = file_get_contents("php://input");
 
 //Each time a webhook notification is sent, log it into a text file
-if(!is_null($jsonData) && !empty($jsonData))
-{
+if(!is_null($jsonData) && !empty($jsonData)) {
 	$json = json_decode($jsonData, TRUE);
 	
-	log::add("Netatmo", 'warning', print_r($json, true));
-	if (!empty($json['event_type'])) {
-		switch ($json['event_type']) {
-			case "set_point":
-				$eqLogic = eqLogic::byLogicalId($json['home']['modules'][0]['id'], Netatmo);
-				$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', $json['temperature']);
-				break;
-			case "therm_mode":
-				foreach ($eqLogicList as $eqLogic) {
-					if($eqLogic->getConfiguration('type')==='NATherm1') {
-						$eqLogic->checkAndUpdateCmd('therm_setpoint_mode', $json['mode']);
-					}
-				}
-				break;
-			case "cancel_set_point":
-				foreach ($eqLogicList as $eqLogic) {
-					if($eqLogic->getConfiguration('type')==='NATherm1') {
-						$eqLogic->checkAndUpdateCmd('therm_setpoint_mode', 'schedule');
-					}
-				}
-				break;
-
-			default:
-				log::add("Netatmo", 'warning', "event_type non géré : " . $json['event_type']);
-		}
-	} else {
-		log::add("Netatmo", 'info', 'Il n’y a pas de event_type');
+	log::add("Netatmo", 'debug', print_r($json, true));
+	$module = $json['home']['modules'][0];
+	$room = $json['home']['rooms'][0];
+	$eqLogic = eqLogic::byLogicalId($module['id'], Netatmo);
+	if(!empty($room['therm_setpoint_temperature'])) {
+		$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', $room['therm_setpoint_temperature']);
 	}
+	if(!empty($room['therm_setpoint_end_time'])) {
+		$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', $room['therm_setpoint_end_time']);
+	}
+	if(!empty($room['therm_setpoint_mode'])) {
+		$therm_setpoint_mode = $room['therm_setpoint_mode'];
+	}
+	if(!empty($json['therm_mode'])) {
+		$therm_setpoint_mode = $json['therm_mode'];
+	}
+	if(!empty($json['mode'])) {
+		$therm_setpoint_mode = $json['mode'];
+	}
+	log::add("Netatmo", 'info', "therm_setpoint_mode : " . $therm_setpoint_mode);
+	if(!empty($therm_setpoint_mode)) {
+		$eqLogic->checkAndUpdateCmd('therm_setpoint_mode', $therm_setpoint_mode);
+		switch ($therm_setpoint_mode) {
+			case 'home':
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', 18.5); // Change 18.5
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', 0);
+			break;
+			case 'away':
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', 15); // Change 18.5
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', 0);
+			break;
+			case 'schedule':
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', 19); // Change 18.5
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', 0);
+			break;
+			case 'hg':
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_temperature', 10); // Change 18.5
+				$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', 0);
+			break;
+			case 'manual':
+			break;
+			default:
+					log::add("Netatmo", 'info', "therm_setpoint_mode non géré " . $therm_setpoint_mode);
+				break;
+		}
+	}
+	if(!empty($room['therm_mode_endtime'])) {
+		$eqLogic->checkAndUpdateCmd('therm_setpoint_end_time', $room['therm_mode_endtime']);
+	}
+} else {
+	log::add("Netatmo", 'debug', "Netatmo  jsonData   " . $jsonData);
 }
