@@ -62,7 +62,7 @@ $('.eqLogicAction[data-action=syncDevice]').on('click', function () {
 			if (document.location.toString().match('#')) {
 				url += '#' + document.location.toString().split('#')[1];
 			}
-			loadPage(url);
+			jeedomUtils.loadPage(url);
 		}
 	});
 });
@@ -97,7 +97,7 @@ $('.eqLogicAction[data-action=syncWeather]').on('click', function () {
 			if (document.location.toString().match('#')) {
 				url += '#' + document.location.toString().split('#')[1];
 			}
-			loadPage(url);
+			jeedomUtils.loadPage(url);
 		}
 	});
 });
@@ -132,7 +132,7 @@ $('.eqLogicAction[data-action=syncEnergy]').on('click', function () {
 			if (document.location.toString().match('#')) {
 				url += '#' + document.location.toString().split('#')[1];
 			}
-			loadPage(url);
+			jeedomUtils.loadPage(url);
 		}
 	});
 });
